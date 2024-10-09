@@ -11,29 +11,63 @@ public class Main {
         var scan = new Scanner(System.in);
         double num1;
         double num2;
-        double res;
+        double res = 0;
         while(true){
             System.out.println();
             System.out.println("Which operation would you like to perform?");
             System.out.println("Type '+' for addition \n'-' for subtraction \n'*' for multiplication " +
                     "\n'/' for division \nand 'e' for exit program");
-            String operation = scan.next();
+            String operation = scan.nextLine();
             switch (operation) {
                 case "+":
-                    System.out.println("Enter first number: ");
+                    System.out.println("Enter a number: ");
                     num1 = num();
-                    System.out.println("Enter second number: ");
-                    num2 = num();
-                    res = addition(num1, num2);
-                    System.out.println(num1 + " + " + num2 + " = " + res);
+                    while (true){
+                        System.out.println("Enter a number: ");
+                        num2 = num();
+                        if (res != 0){
+                            num1 = res;
+                            res = addition(num2, res);
+                        }
+                        else {
+                            res = addition(num1, num2);
+                        }
+                        System.out.println(num1 + " + " + num2 + " = " + res);
+                        System.out.println("Do you want to add addtional to this? 'y' or 'n': ");
+                        String ans =scan.nextLine().toLowerCase();
+                        if (ans.equals("n")){
+                            break;
+                        }
+                        else if (!ans.equals("y")){
+                            System.out.println("Bad answer going back to meny.");
+                            break;
+                        }
+                    }
                     break;
                 case "-":
-                    System.out.println("Enter first number: ");
+                    System.out.println("Enter a number: ");
                     num1 = num();
-                    System.out.println("Enter second number: ");
-                    num2 = num();
-                    res = subtraction(num1, num2);
-                    System.out.println(num1 + " - " + num2 + " = " + res);
+                    while (true){
+                        System.out.println("Enter a number: ");
+                        num2 = num();
+                        if (res != 0){
+                            num1 = res;
+                            res = subtraction(res, num2);
+                        }
+                        else {
+                            res = subtraction(num1, num2);
+                        }
+                        System.out.println(num1 + " - " + num2 + " = " + res);
+                        System.out.println("Do you want to subtract more from this? 'y' or 'n': ");
+                        String ans =scan.nextLine().toLowerCase();
+                        if (ans.equals("n")){
+                            break;
+                        }
+                        else if (!ans.equals("y")){
+                            System.out.println("Bad answer going back to meny.");
+                            break;
+                        }
+                    }
                     break;
                 case "*":
                     System.out.println("Enter first number: ");
