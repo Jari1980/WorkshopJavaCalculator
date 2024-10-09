@@ -82,6 +82,10 @@ public class Main {
                     num1 = num();
                     System.out.println("Enter second number: ");
                     num2 = num();
+                    if (num2 == 0){
+                        System.out.println("Cant divide by zero, back to main meny.");
+                        break;
+                    }
                     res = division(num1, num2);
                     System.out.println(num1 + " / " + num2 + " = " + res);
                     break;
